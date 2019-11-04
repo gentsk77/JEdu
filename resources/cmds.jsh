@@ -14,4 +14,11 @@ public class MyClass{
     }
 }
 
-new MyClass().sayHelloWorld()
+new MyClass().sayHelloWorld();
+
+import java.util.*;
+
+Map<String, Integer> hm = new HashMap<>();
+hm.put("s1", 1);
+hm.put("s2", 2);
+hm;
