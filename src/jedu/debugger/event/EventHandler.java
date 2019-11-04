@@ -31,6 +31,12 @@ import java.util.Vector;
 public final class EventHandler implements Runnable
 {
 
+  public static void main (String[] args) 
+  {
+    EventHandler eh = new EventHandler();
+    System.out.println("here");
+  }
+
   private Thread thread;
   private volatile boolean connected = false;
   private boolean suspendVM = false;

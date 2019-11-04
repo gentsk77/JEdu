@@ -19,6 +19,11 @@ import java.util.Iterator;
 
 final class EventRequestHandler  extends EventAdapter 
 {
+  public static void main (String[] args)
+  {
+    EventRequestHandler erh = new EventRequestHandler();
+    System.out.println("JERE");
+  }
 
   final void reset()
   {
@@ -148,6 +153,11 @@ final class EventRequestHandler  extends EventAdapter
   
   static class EventList extends ArrayList
   {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     public EventSpec eventAt(int index)
     {
       return (EventSpec)get(index);

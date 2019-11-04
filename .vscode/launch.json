@@ -6,6 +6,42 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - EventHandler",
+            "request": "launch",
+            "mainClass": "jedu.interaction.core/jedu.debugger.event.EventHandler"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - IORedirector",
+            "request": "launch",
+            "mainClass": "jedu.interaction.core/jedu.debugger.core.IORedirector"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - DebuggerException",
+            "request": "launch",
+            "mainClass": "jedu.interaction.core/jedu.debugger.core.DebuggerException"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - DebuggerImpl",
+            "request": "launch",
+            "mainClass": "jedu.interaction.core/jedu.debugger.core.DebuggerImpl"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - EventRequestHandler",
+            "request": "launch",
+            "mainClass": "jedu.interaction.core/jedu.debugger.core.EventRequestHandler"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ContextEvaluator",
+            "request": "launch",
+            "mainClass": "jedu.interaction.core/jedu.debugger.core.ContextEvaluator"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"
