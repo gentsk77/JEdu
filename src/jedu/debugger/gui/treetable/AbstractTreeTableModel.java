@@ -1,16 +1,3 @@
-/*
- * @(#)AbstractTreeTableModel.java	1.2 98/10/27
- *
- * Copyright 1997, 1998 by Sun Microsystems, Inc.,
- * 901 San Antonio Road, Palo Alto, California, 94303, U.S.A.
- * All rights reserved.
- *
- * This software is the confidential and proprietary information
- * of Sun Microsystems, Inc. ("Confidential Information").  You
- * shall not disclose such Confidential Information and shall use
- * it only in accordance with the terms of the license agreement
- * you entered into with Sun.
- */
 
 package jedu.debugger.gui.treetable;
 
@@ -18,13 +5,6 @@ import javax.swing.tree.TreePath;
 import javax.swing.event.EventListenerList;
 import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
- 
-/**
- * @version 1.2 10/27/98
- * An abstract implementation of the TreeTableModel interface, handling the list 
- * of listeners. 
- * @author Philip Milne
- */
 
 public abstract class AbstractTreeTableModel implements TreeTableModel {
     protected Object root;     
@@ -186,14 +166,4 @@ public abstract class AbstractTreeTableModel implements TreeTableModel {
 
     public void setValueAt(Object aValue, Object node, int column) {}
 
-
-    // Left to be implemented in the subclass:
-
-    /* 
-     *   public Object getChild(Object parent, int index)
-     *   public int getChildCount(Object parent) 
-     *   public int getColumnCount() 
-     *   public String getColumnName(Object node, int column)  
-     *   public Object getValueAt(Object node, int column) 
-     */
 }

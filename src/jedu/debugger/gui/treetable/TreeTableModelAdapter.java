@@ -1,16 +1,3 @@
-/*
- * @(#)TreeTableModelAdapter.java	1.2 98/10/27
- *
- * Copyright 1997, 1998 by Sun Microsystems, Inc.,
- * 901 San Antonio Road, Palo Alto, California, 94303, U.S.A.
- * All rights reserved.
- *
- * This software is the confidential and proprietary information
- * of Sun Microsystems, Inc. ("Confidential Information").  You
- * shall not disclose such Confidential Information and shall use
- * it only in accordance with the terms of the license agreement
- * you entered into with Sun.
- */
 
 package jedu.debugger.gui.treetable;
 
@@ -23,20 +10,13 @@ import javax.swing.event.TreeExpansionListener;
 import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 
-/**
- * This is a wrapper class takes a TreeTableModel and implements 
- * the table model interface. The implementation is trivial, with 
- * all of the event dispatching support provided by the superclass: 
- * the AbstractTableModel. 
- *
- * @version 1.2 10/27/98
- *
- * @author Philip Milne
- * @author Scott Violet
- */
 public class TreeTableModelAdapter extends AbstractTableModel
 {
-    JTree tree;
+    /**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+	JTree tree;
     TreeTableModel treeTableModel;
 
     public TreeTableModelAdapter(TreeTableModel treeTableModel, JTree tree) {
@@ -87,7 +67,7 @@ public class TreeTableModelAdapter extends AbstractTableModel
 	return treeTableModel.getColumnName(column);
     }
 
-    public Class getColumnClass(int column) {
+    public Class<> getColumnClass(int column) {
 	return treeTableModel.getColumnClass(column);
     }
 

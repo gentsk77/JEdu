@@ -1,16 +1,3 @@
-/*
- * @(#)JTreeTable.java	1.2 98/10/27
- *
- * Copyright 1997, 1998 by Sun Microsystems, Inc.,
- * 901 San Antonio Road, Palo Alto, California, 94303, U.S.A.
- * All rights reserved.
- *
- * This software is the confidential and proprietary information
- * of Sun Microsystems, Inc. ("Confidential Information").  You
- * shall not disclose such Confidential Information and shall use
- * it only in accordance with the terms of the license agreement
- * you entered into with Sun.
- */
 
 package jedu.debugger.gui.treetable;
 
@@ -37,18 +24,12 @@ import java.awt.event.MouseEvent;
 
 import java.util.EventObject;
 
-/**
- * This example shows how to create a simple JTreeTable component, 
- * by using a JTree as a renderer (and editor) for the cells in a 
- * particular column in the JTable.  
- *
- * @version 1.2 10/27/98
- *
- * @author Philip Milne
- * @author Scott Violet
- */
 public class JTreeTable extends JTable {
-    /** A subclass of JTree. */
+    /**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+	/** A subclass of JTree. */
     protected TreeTableCellRenderer tree;
 
     public JTreeTable(TreeTableModel treeTableModel) {
@@ -133,7 +114,11 @@ public class JTreeTable extends JTable {
      */
     public class TreeTableCellRenderer extends JTree implements
 	         TableCellRenderer {
-	/** Last table/tree row asked to renderer. */
+		/**
+			 *
+			 */
+		private static final long serialVersionUID = 1L;
+		/** Last table/tree row asked to renderer. */
 	protected int visibleRow;
 
 	public TreeTableCellRenderer(TreeModel model) {
@@ -249,7 +234,7 @@ public class JTreeTable extends JTable {
 		    if (getColumnClass(counter) == TreeTableModel.class) {
 			MouseEvent me = (MouseEvent)e;
 			MouseEvent newME = new MouseEvent(tree, me.getID(),
-				   me.getWhen(), me.getModifiers(),
+				   me.getWhen(),
 				   me.getX() - getCellRect(0, counter, true).x,
 				   me.getY(), me.getClickCount(),
                                    me.isPopupTrigger());
@@ -270,7 +255,11 @@ public class JTreeTable extends JTable {
      * in the DefaultTreeSelectionModel.
      */
     class ListToTreeSelectionModelWrapper extends DefaultTreeSelectionModel { 
-	/** Set to true when we are updating the ListSelectionModel. */
+		/**
+			 *
+			 */
+		private static final long serialVersionUID = 1L;
+		/** Set to true when we are updating the ListSelectionModel. */
 	protected boolean         updatingListSelectionModel;
 
 	public ListToTreeSelectionModelWrapper() {

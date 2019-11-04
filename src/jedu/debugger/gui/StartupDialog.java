@@ -21,12 +21,16 @@ import org.gjt.sp.jedit.jEdit;
 
 public class StartupDialog extends JDialog implements ActionListener
 {
+  /**
+   *
+   */
+  private static final long serialVersionUID = 1L;
+
   public StartupDialog(View owner)
   {
     super(owner, "Launch parameters ...", true);
     createUI();
     GUIUtilities.centerOnScreen(this);
-    show();
   }
 
   private final void createUI()
