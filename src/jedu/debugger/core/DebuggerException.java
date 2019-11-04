@@ -1,5 +1,3 @@
-
-
 package jedu.debugger.core;
 
 public class DebuggerException extends Exception 

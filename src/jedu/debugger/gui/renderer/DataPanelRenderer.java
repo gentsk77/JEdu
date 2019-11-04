@@ -1,4 +1,3 @@
-
 package jedu.debugger.gui.renderer;
 
 import javax.swing.tree.TreeCellRenderer;

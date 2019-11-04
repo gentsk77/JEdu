@@ -1,4 +1,3 @@
-
 package jedu.debugger.gui;
 
 import com.sun.jdi.event.LocatableEvent;
@@ -21,83 +20,65 @@ import jedu.debugger.gui.tree.TreeNodeFactory;
 
 import jedu.debugger.gui.renderer.ClassPanelRenderer;
 
-public class ClassPanel  extends TabPanel
-{
-  public ClassPanel()
-  {
+public class ClassPanel extends TabPanel {
+  public ClassPanel() {
     root = new TreeNode("");
     model = new DefaultTreeModel(root);
   }
-  
-  protected void createUI()
-  {
+
+  protected void createUI() {
     JTree tree = new JTree(model);
     tree.setRootVisible(false);
     tree.setShowsRootHandles(true);
     tree.setCellRenderer(new ClassPanelRenderer());
 
     JScrollPane scroll = new JScrollPane(tree);
-    panel.add(scroll, BorderLayout.CENTER);    
+    panel.add(scroll, BorderLayout.CENTER);
   }
 
-  private void clear()
-  {
+  private void clear() {
     root.removeAllChildren();
     model.nodeStructureChanged(root);
   }
 
-
-  private void update(List list)
-  {
-    for (int i = 0; i < list.size(); i++)
-    {
+  private void update(List list) {
+    for (int i = 0; i < list.size(); i++) {
       Object obj = list.get(i);
-      if (! (obj instanceof ArrayType))
-      {
+      if (!(obj instanceof ArrayType)) {
         ReferenceType rt = (ReferenceType) obj;
         String name = rt.name();
-	if (name.indexOf('.') != -1)
-	{
-	  StringTokenizer tokenizer = new StringTokenizer(name, ".");
+        if (name.indexOf('.') != -1) {
+          StringTokenizer tokenizer = new StringTokenizer(name, ".");
           TreeNode node = root;
-          while (tokenizer.hasMoreTokens())
-          {
+          while (tokenizer.hasMoreTokens()) {
             String token = tokenizer.nextToken();
-            if (tokenizer.countTokens() != 0)
-            {
+            if (tokenizer.countTokens() != 0) {
               node = node.getCreateChild(token);
             }
-	  }
-	  node.getCreateChild(rt);
+          }
+          node.getCreateChild(rt);
+        } else {
+          root.getCreateChild(rt);
         }
-	else
-	{
-	  root.getCreateChild(rt);
-	}
       }
     }
   }
 
-  public void vmDisconnectEvent(VMDisconnectEvent evt)
-  {
+  public void vmDisconnectEvent(VMDisconnectEvent evt) {
     clear();
   }
 
-  public void vmDeathEvent(VMDeathEvent evt)
-  {
+  public void vmDeathEvent(VMDeathEvent evt) {
     clear();
   }
 
-  public void locatableEvent(LocatableEvent event)
-  {
+  public void locatableEvent(LocatableEvent event) {
     update(event.virtualMachine().allClasses());
     model.nodeStructureChanged(root);
   }
-  
-  protected void handleDebuggerMessage(DebuggerMessage message)
-  {
-    if (message.getReason() == DebuggerMessage.SESSION_INTERRUPTED)
-    {
+
+  protected void handleDebuggerMessage(DebuggerMessage message) {
+    if (message.getReason() == DebuggerMessage.SESSION_INTERRUPTED) {
       update(message.getSession().getAllClasses());
     }
   }
@@ -105,4 +86,3 @@ public class ClassPanel  extends TabPanel
   TreeNode root;
   DefaultTreeModel model;
 }
-

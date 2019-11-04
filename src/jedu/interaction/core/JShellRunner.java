@@ -59,7 +59,7 @@ public class JShellRunner {
             }
         }
 
-        // If there are any erros print and exit
+        // If there are any errors, print and exit
         if (Snippet.Status.REJECTED.equals(snippetEvent.status())) {
             // should be updated to print the specific error
             System.out.println("Invalid Statement: " + snippetEvent.snippet().toString()
@@ -70,13 +70,12 @@ public class JShellRunner {
     private String trimNewlines(String s) {
         int b = 0;
         while (b < s.length() && s.charAt(b) == '\n') {
-            ++b;
+            b++;
         }
         int e = s.length() - 1;
         while (e >= 0 && s.charAt(e) == '\n') {
-            --e;
+            e--;
         }
         return s.substring(b, e + 1);
     }
-
 }

@@ -1,4 +1,3 @@
-
 package jedu.debugger.event;
 
 import jedu.debugger.spec.EventSpec;

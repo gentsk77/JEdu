@@ -1,4 +1,3 @@
-
 package jedu.debugger.event;
 
 import com.sun.jdi.event.BreakpointEvent;

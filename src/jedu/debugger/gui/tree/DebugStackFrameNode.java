@@ -1,4 +1,3 @@
-
 package jedu.debugger.gui.tree;
 
 import com.sun.jdi.LocalVariable;
@@ -10,87 +9,66 @@ import com.sun.jdi.AbsentInformationException;
 import com.sun.jdi.Value;
 import java.util.List;
 
-
-public class DebugStackFrameNode extends StackFrameNode
-{
-
+public class DebugStackFrameNode extends StackFrameNode {
 
   /**
    *
    */
   private static final long serialVersionUID = 1L;
 
-  public DebugStackFrameNode(StackFrame frame)
-  {
+  public DebugStackFrameNode(StackFrame frame) {
     super(frame);
     setFrame(frame);
   }
 
-
-
-  public void setFrame(StackFrame frame)
-  {
-    //If the node was loaded, remove all the children.
+  public void setFrame(StackFrame frame) {
+    // If the node was loaded, remove all the children.
     setLoaded(false);
-    
-    if (frame != null)
-    {
+
+    if (frame != null) {
       setUserObject(frame);
-    }
-    else
-    {
+    } else {
       setUserObject(DUMMY_NODE);
     }
   }
-  
-  public void populateChildren()
-  {
-    if (getStackFrame() != null)
-    {
+
+  public void populateChildren() {
+    if (getStackFrame() != null) {
       addChildren();
     }
-    
+
   }
-  
-  private void addChildren()
-  {
+
+  private void addChildren() {
     int next = 0;
     StackFrame frame = getStackFrame();
     ObjectReference thisObj = frame.thisObject();
-    if (thisObj != null )
-    {
+    if (thisObj != null) {
       next = 1;
       insert(new ValueNode("this", thisObj, null), 0);
-    } 
-    
-    try
-    {
+    }
+
+    try {
       List list = frame.visibleVariables();
       addChildren(list, next);
-    }
-    catch (AbsentInformationException ex)
-    {
+    } catch (AbsentInformationException ex) {
     }
   }
-  
-  public void addChild(Object obj, int index)
-  {
-    LocalVariable variable = (LocalVariable)obj;
+
+  public void addChild(Object obj, int index) {
+    LocalVariable variable = (LocalVariable) obj;
     Value value = getStackFrame().getValue(variable);
     String name = variable.name();
     insert(new ValueNode(name, value, variable), index);
   }
 
-  public boolean isLeaf()
-  {
+  public boolean isLeaf() {
     return false;
   }
 
-  public boolean equals(Object other)
-  {
-    if (other instanceof StackFrameNode)
-    {
-      StackFrameNode node = (StackFrameNode)other;
+  public boolean equals(Object other) {
+    if (other instanceof StackFrameNode) {
+      StackFrameNode node = (StackFrameNode) other;
       return getStackFrame() == node.getStackFrame();
     }
     return false;

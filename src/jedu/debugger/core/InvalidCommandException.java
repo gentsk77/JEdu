@@ -1,4 +1,3 @@
-
 package jedu.debugger.core;
 
 public class InvalidCommandException extends java.lang.Exception

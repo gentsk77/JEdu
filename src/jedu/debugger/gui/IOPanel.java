@@ -1,4 +1,3 @@
-
 package jedu.debugger.gui;
 
 import com.sun.jdi.event.VMDeathEvent;
@@ -25,134 +24,118 @@ import javax.swing.text.StyledDocument;
 import org.gjt.sp.jedit.ActionSet;
 import org.gjt.sp.jedit.View;
 
-public class IOPanel  extends TabPanel  implements ActionListener
-{
+public class IOPanel extends TabPanel implements ActionListener {
 
   JTextPane output;
   JTextField input;
-  
+
   OutputReader inputListener;
   OutputReader outputListener;
   OutputReader errorListener;
-  
+
   StyledDocument document;
   StyleContext context;
-  
+
   JPopupMenu popupMenu;
-  
-  public IOPanel()
-  {}
-  
-  protected void createUI()
-  {
+
+  public IOPanel() {
+  }
+
+  protected void createUI() {
     input = new JTextField();
     input.addActionListener(this);
-    
+
     document = new DefaultStyledDocument();
     createStyles();
-    
+
     output = new JTextPane(document);
     output.setEditable(false);
     JScrollPane scroll = new JScrollPane(output);
 
     panel.add(BorderLayout.CENTER, scroll);
     panel.add(BorderLayout.SOUTH, input);
-    
+
     popupMenu = GUIUtils.createPopupMenu(IO_POPUP, actions);
-    output.addMouseListener(mouseHandler);    
+    output.addMouseListener(mouseHandler);
   }
-  
-  public void vmStartEvent(VMStartEvent evt)
-  {
+
+  public void vmStartEvent(VMStartEvent evt) {
     _addListeners();
   }
-  
-  public void vmDeathEvent(VMDeathEvent evt)
-  {
+
+  public void vmDeathEvent(VMDeathEvent evt) {
     _removeListeners();
   }
-  
-  private final void createStyles()
-  {
+
+  private final void createStyles() {
     context = new StyleContext();
     Style inputStyle = context.addStyle("input", null);
     StyleConstants.setForeground(inputStyle, Color.blue);
     StyleConstants.setItalic(inputStyle, true);
-    
+
     Style outputStyle = context.addStyle("output", null);
     StyleConstants.setForeground(outputStyle, Color.black);
 
     Style errorStyle = context.addStyle("error", null);
-    StyleConstants.setForeground(errorStyle, Color.red);    
+    StyleConstants.setForeground(errorStyle, Color.red);
   }
-  
-  private void _addListeners()
-  {
+
+  private void _addListeners() {
     inputListener = new OutputReader(context.getStyle("input"));
     debugger.addEchoListener(inputListener);
-    
+
     outputListener = new OutputReader(context.getStyle("output"));
     debugger.addOutputListener(outputListener);
 
-    errorListener = new OutputReader(context.getStyle("error"));    
-    debugger.addErrorListener(errorListener);    
+    errorListener = new OutputReader(context.getStyle("error"));
+    debugger.addErrorListener(errorListener);
   }
-  
-  private void _removeListeners()
-  {
+
+  private void _removeListeners() {
     debugger.removeEchoListener(inputListener);
     inputListener = null;
-    
+
     debugger.removeOutputListener(outputListener);
     outputListener = null;
-    
+
     debugger.removeErrorListener(errorListener);
     errorListener = null;
   }
 
-  public void actionPerformed(ActionEvent evt)
-  {
+  public void actionPerformed(ActionEvent evt) {
     debugger.outputLine(input.getText());
     input.setText("");
   }
-  
-  
-  protected JPopupMenu getPopupMenu(MouseEvent evt)
-  {
-     return popupMenu;
+
+  protected JPopupMenu getPopupMenu(MouseEvent evt) {
+    return popupMenu;
   }
 
-  public class OutputReader 
-    implements OutputListener.STDERRListener, OutputListener.STDINListener, OutputListener.STDOUTListener
-  {
+  public class OutputReader
+      implements OutputListener.STDERRListener, OutputListener.STDINListener, OutputListener.STDOUTListener {
     Style style;
-    public OutputReader(Style lineStyle)
-    {
+
+    public OutputReader(Style lineStyle) {
       style = lineStyle;
     }
 
-    public void outputLine(String line)
-    {
-      try
-      {
+    public void outputLine(String line) {
+      try {
         document.insertString(document.getLength(), line + '\n', style);
+      } catch (Exception ex) {
       }
-      catch(Exception ex){}
     }
   }
-  
-  protected void createActions()
-  {
+
+  protected void createActions() {
     actions = new ActionSet(IO_POPUP);
-    actions.addAction(new AbstractAction(IO_CLEAR)
-    {
-      public void invoke(View view)
-      {
-        output.setText("");        
+    actions.addAction(new AbstractAction(IO_CLEAR) {
+      public void invoke(View view) {
+        output.setText("");
       }
     });
   }
-  
+
   static final String IO_POPUP = "io.popup";
   static final String IO_CLEAR = "io.clear";
 }

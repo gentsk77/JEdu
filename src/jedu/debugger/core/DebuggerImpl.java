@@ -1,10 +1,8 @@
-
 package jedu.debugger.core;
 
 /** 
  * This class Represents an instance of Debugger.
  */
-
 
 import com.sun.jdi.Bootstrap;
 import com.sun.jdi.VMDisconnectedException;

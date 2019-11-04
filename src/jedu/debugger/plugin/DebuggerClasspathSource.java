@@ -1,5 +1,3 @@
-
-
 package jedu.debugger.plugin;
 
 import jedu.debugger.JavaDebuggerPlugin;
@@ -9,20 +7,16 @@ import javacore.AbstractClasspathSource;
 
 import org.gjt.sp.jedit.jEdit;
 
-public class DebuggerClasspathSource extends AbstractClasspathSource
-{
-  public DebuggerClasspathSource()
-  {
+public class DebuggerClasspathSource extends AbstractClasspathSource {
+  public DebuggerClasspathSource() {
     super(JavaDebuggerPlugin.class);
   }
-  
-  public String getClasspath()
-  {
+
+  public String getClasspath() {
     return jEdit.getProperty(DebuggerOptions.CLASSPATH, "");
   }
-  
-  public String getSourcepath()
-  {
-    return jEdit.getProperty(DebuggerOptions.SOURCEPATH, "");    
+
+  public String getSourcepath() {
+    return jEdit.getProperty(DebuggerOptions.SOURCEPATH, "");
   }
 }
