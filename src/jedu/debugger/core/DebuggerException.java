@@ -7,6 +7,13 @@ public class DebuggerException extends Exception
   /**
    *
    */
+
+  public static void main (String[] args)
+  {
+    DebuggerException de = new DebuggerException("test");
+    System.out.println("here");
+  }
+
   private static final long serialVersionUID = 1L;
 
   public DebuggerException(String message)

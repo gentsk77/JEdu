@@ -15,7 +15,12 @@ import javax.swing.event.EventListenerList;
 
 final class IORedirector implements OutputListener
 {
-  
+  public static void main (String[] args)
+  {
+    IORedirector ior = new IORedirector();
+    System.out.println("here");
+  }
+
   private EventListenerList listeners = new EventListenerList();
   private PrintWriter input;
   private volatile boolean running = false;

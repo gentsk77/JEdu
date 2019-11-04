@@ -18,6 +18,7 @@ import java.util.StringTokenizer;
  */
 public final class ContextEvaluator 
 {
+
   public ContextEvaluator(StackFrame stack)
   {
     stackframe = stack;

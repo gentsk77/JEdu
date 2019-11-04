@@ -26,9 +26,16 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.event.EventListenerList;
+
 public class DebuggerImpl implements Debugger
 {
 
+  public static void main(String[] args) 
+  {
+    DebuggerImpl di = new DebuggerImpl();
+    System.out.println("here");
+  }
   static final int MODE_LAUNCH = 1;
   static final int MODE_ATTACH = 2;
   static final int MODE_CONNECT = 3;
