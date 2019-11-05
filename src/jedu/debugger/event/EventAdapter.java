@@ -16,30 +16,55 @@ import com.sun.jdi.event.VMDisconnectEvent;
 import com.sun.jdi.event.VMStartEvent;
 import com.sun.jdi.event.WatchpointEvent;
 
-public abstract class EventAdapter implements EventListener
-{
-  public void vmStartEvent(VMStartEvent event) {}
+public abstract class EventAdapter implements EventListener {
+  public void vmStartEvent(VMStartEvent event) {
+  }
 
-  public void vmDeathEvent(VMDeathEvent event) {}
-  public void vmDisconnectEvent(VMDisconnectEvent event) {}
+  public void vmDeathEvent(VMDeathEvent event) {
+  }
 
-  public void threadStartEvent(ThreadStartEvent event) {}
-  public void threadDeathEvent(ThreadDeathEvent event) {}
+  public void vmDisconnectEvent(VMDisconnectEvent event) {
+  }
 
-  public void classPrepareEvent(ClassPrepareEvent event) {}
-  public void classUnloadEvent(ClassUnloadEvent event) {}
+  public void threadStartEvent(ThreadStartEvent event) {
+  }
 
-  public void breakpointEvent(BreakpointEvent event) {}
-  public void watchpointEvent(WatchpointEvent event) {}
-  public void exceptionEvent(ExceptionEvent event) {}
+  public void threadDeathEvent(ThreadDeathEvent event) {
+  }
 
-  public void stepEvent(StepEvent event) {}
-  public void methodEntryEvent(MethodEntryEvent event) {}
-  public void methodExitEvent(MethodExitEvent event) {}
+  public void classPrepareEvent(ClassPrepareEvent event) {
+  }
 
-  public void event(Event event) {}
-  public void locatableEvent(LocatableEvent event) {}
+  public void classUnloadEvent(ClassUnloadEvent event) {
+  }
 
-  public void vmInterrupted() {}
-  public void vmSuspended() {}
+  public void breakpointEvent(BreakpointEvent event) {
+  }
+
+  public void watchpointEvent(WatchpointEvent event) {
+  }
+
+  public void exceptionEvent(ExceptionEvent event) {
+  }
+
+  public void stepEvent(StepEvent event) {
+  }
+
+  public void methodEntryEvent(MethodEntryEvent event) {
+  }
+
+  public void methodExitEvent(MethodExitEvent event) {
+  }
+
+  public void event(Event event) {
+  }
+
+  public void locatableEvent(LocatableEvent event) {
+  }
+
+  public void vmInterrupted() {
+  }
+
+  public void vmSuspended() {
+  }
 }

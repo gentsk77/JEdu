@@ -89,7 +89,6 @@ public class JavaDebuggerPlugin extends EBPlugin {
    * Returns the instance of JavaDebuggerPlugin running. Since the plugin is a
    * singleton this method helps to get the handle to the singleton
    */
-
   private static JavaDebuggerPlugin plugin;
 
   public static JavaDebuggerPlugin getPlugin() {
