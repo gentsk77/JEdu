@@ -11,6 +11,10 @@ import java.io.PrintWriter;
 import java.util.EventListener;
 import javax.swing.event.EventListenerList;
 
+// Core component
+// Error unknow
+// Need to change libraries for io funcitons
+
 final class IORedirector implements OutputListener {
   public static void main(String[] args) {
     IORedirector ior = new IORedirector();

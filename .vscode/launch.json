@@ -6,6 +6,24 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - StepHandler",
+            "request": "launch",
+            "mainClass": "jedu.interaction.core/jedu.debugger.core.StepHandler"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - GeneralDebuggerOptions",
+            "request": "launch",
+            "mainClass": "jedu.interaction.core/jedu.debugger.options.GeneralDebuggerOptions"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - JavaDebuggerPlugin",
+            "request": "launch",
+            "mainClass": "jedu.interaction.core/jedu.debugger.JavaDebuggerPlugin"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - EventHandler",
             "request": "launch",
             "mainClass": "jedu.interaction.core/jedu.debugger.event.EventHandler"

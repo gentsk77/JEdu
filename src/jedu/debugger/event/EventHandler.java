@@ -27,6 +27,8 @@ import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.Vector;
 
+// The events are usable and complete
+
 public final class EventHandler implements Runnable {
 
   public static void main(String[] args) {

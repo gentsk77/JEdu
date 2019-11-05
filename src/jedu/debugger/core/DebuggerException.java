@@ -1,5 +1,7 @@
 package jedu.debugger.core;
 
+// Exceptions ok
+
 public class DebuggerException extends Exception {
   public static void main(String[] args) {
     DebuggerException de = new DebuggerException("test");

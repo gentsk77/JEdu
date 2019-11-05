@@ -17,6 +17,8 @@ import jedu.debugger.spec.EventSpec;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+// event handling ok
+
 final class EventRequestHandler extends EventAdapter {
   public static void main(String[] args) {
     EventRequestHandler erh = new EventRequestHandler();

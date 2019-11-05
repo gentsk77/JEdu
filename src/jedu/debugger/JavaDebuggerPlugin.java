@@ -17,6 +17,10 @@ public class JavaDebuggerPlugin extends EBPlugin {
 
   private Hashtable views;
 
+  public static void main (String[] args) {
+    JavaDebuggerPlugin jdp = new JavaDebuggerPlugin();
+  }
+
   public JavaDebuggerPlugin() {
     // Initialize the static variable which is handle to this plugin;
     plugin = this;

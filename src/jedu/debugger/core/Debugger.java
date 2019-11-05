@@ -16,6 +16,8 @@ public interface Debugger {
    * @see com.sun.jdi.connect.LaunchingConnector
    */
 
+   //Major component
+   
   public void launch(Map launchParams) throws DebuggerException;
 
   /**
