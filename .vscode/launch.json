@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - InteractionPaneGUI",
+            "request": "launch",
+            "mainClass": "InteractionPaneGUI",
+            "projectName": "JEdu_cd452294"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TextAreaExperiments",
+            "request": "launch",
+            "mainClass": "TextAreaExperiments",
+            "projectName": "JEdu_cd452294"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - EventHandler",
             "request": "launch",
             "mainClass": "jedu.interaction.core/jedu.debugger.event.EventHandler"

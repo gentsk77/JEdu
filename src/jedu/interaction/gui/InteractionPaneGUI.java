@@ -1,69 +1,45 @@
 import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.Button;
-import javafx.event.EventHandler;
-import javafx.event.ActionEvent;
-import javafx.stage.Window;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-/** The interaction pane GUI
- * @author Yue Shu
- */
-public class InteractionPaneGUI extends Application {
-  /** The run button for interaction pane */
-  private Button button;
-  
-  /** Tracks number of button clicks */
-  private int clicks = 0;
-  
-  /** Tracks the primaryStage in use. */
-  private Stage setPrimaryStage;
-  
-  private TextArea save;
-  /**
-   */
-  private class ButtonAction implements EventHandler<ActionEvent>{
-    /** React to a button click: Return the number of times the button has been clicked.
-    * @param e  information about the button click event that occurred
-    */
-    public void handle(ActionEvent e){
-      Button b = (Button) e.getSource();
-      clicks = clicks + 1;
-      b.setText("Click me");
-      setPrimaryStage.sizeToScene();
-      save.appendText("\n"+"Click count: "+ clicks);
+public class InteractionPaneGUI extends Application  {
+
+    private TextArea cmdTextArea;
+    private TextArea outputTextArea;
+    private Button compileButton;
+
+    @Override
+    public void start(final Stage primaryStage) throws Exception {
+        primaryStage.setTitle("Interaction Pane");
+        final BorderPane pane = new BorderPane();
+
+        // cmdTextArea is the text area for command input
+        cmdTextArea = new TextArea();
+        compileButton = new Button("Compile and Run");
+        outputTextArea = new TextArea();
+
+        compileButton.setMinWidth(50);
+
+        compileButton.setOnAction(action -> {
+
+            // TODO: change the line below to run jshell and evaluate
+            
+            outputTextArea.setText(cmdTextArea.getText());
+        });
+
+        pane.setCenter(compileButton);
+        pane.setTop(cmdTextArea);
+        pane.setBottom(outputTextArea);
+
+        final Scene scene = new Scene(pane);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
-  }
-  
-  /** 
-   * Overrides the start method of Application to create the GUI with one button in the center of the main window.
-   * @param primaryStage the JavaFX main window
-   */
-  public void start(Stage primaryStage) {
-    button = new Button("Click me");
-    button.setOnAction(new ButtonAction());
-    
-    BorderPane pane = new BorderPane();// create a 5 region layout for the window
-    save = new TextArea("Click count: 0");
-    pane.setCenter(save);
-    pane.setTop(button); // add the button to the middle
-    setPrimaryStage = primaryStage;
-    Scene scene = new Scene(pane);// Create a "scene" that contains this border area
 
-    primaryStage.setTitle("Button Lab GUI");
-    primaryStage.setScene(scene);            // Add the "scene" to the main window
-    primaryStage.show();                     // Display the window
-  }
-    
-  
-  /**
-   * The method to launch the program.
-   * @param args  The command line arguments.  The arguments are passed on to the JavaFX application.
-   */
-   public static void main(String[] args) {
-     Application.launch(args);
-   }
-  
+    public static void main(final String[] args) {
+        Application.launch(args);
+    }
 }
