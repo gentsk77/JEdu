@@ -9,7 +9,13 @@ import org.gjt.sp.jedit.jEdit;
 /**
  * A panel for the general UI options of the debugger.
  */
+
+ // UI needs to be rebuilt
 public class GeneralDebuggerOptions extends AbstractOptionPane implements DebuggerOptions {
+  public static void main (String[] args) {
+    //complier error not shown
+    GeneralDebuggerOptions gdo = new GeneralDebuggerOptions();
+  }
 
   public GeneralDebuggerOptions() {
     super("java.debugger.general");

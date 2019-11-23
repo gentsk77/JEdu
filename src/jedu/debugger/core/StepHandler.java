@@ -14,6 +14,11 @@ import java.util.List;
 public class StepHandler extends EventAdapter {
   ThreadReference curThread;
 
+  public static void main (String[] args) {
+    StepHandler sh = new StepHandler();    
+    System.out.println("here");
+  }
+
   public StepHandler() {
   }
 

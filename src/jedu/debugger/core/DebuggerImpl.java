@@ -26,6 +26,11 @@ import java.util.Map;
 
 import javax.swing.event.EventListenerList;
 
+// The implementing class for the debugger interface
+// Core component
+// Some outdated liraries replaced
+// Still have unknow errors
+
 public class DebuggerImpl implements Debugger {
 
   public static void main(String[] args) {
