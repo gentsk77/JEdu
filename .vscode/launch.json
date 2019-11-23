@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - InteractionPaneGUI",
+            "request": "launch",
+            "mainClass": "InteractionPaneGUI",
+            "projectName": "JEdu_cd452294"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - StepHandler",
             "request": "launch",
             "mainClass": "jedu.interaction.core/jedu.debugger.core.StepHandler"
