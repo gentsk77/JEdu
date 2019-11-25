@@ -11,6 +11,8 @@ import jedu.debugger.event.EventAdapter;
 
 import java.util.List;
 
+// Step handler ok
+
 public class StepHandler extends EventAdapter {
   ThreadReference curThread;
 

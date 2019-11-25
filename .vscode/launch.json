@@ -6,6 +6,26 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - ExampleJShell",
+            "request": "launch",
+            "mainClass": "jedu.interaction.core.ExampleJShell",
+            "projectName": "JEdu_878f454c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ExampleJShell",
+            "request": "launch",
+            "mainClass": "jedu.interaction.core/jedu.interaction.core.ExampleJShell",
+            "projectName": "JEdu_878f454c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - JShellRunner",
+            "request": "launch",
+            "mainClass": "jedu.interaction.core.JShellRunner"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - StepHandler",
             "request": "launch",
             "mainClass": "jedu.interaction.core/jedu.debugger.core.StepHandler"
