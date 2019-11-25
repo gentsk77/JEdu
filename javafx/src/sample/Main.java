@@ -16,8 +16,10 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     private TextArea cmdTextArea;
+    private TextArea classPathArea;
     private TextArea outputTextArea;
     private Button compileButton;
+    private Button loadClassButton;
 
     @Override
     public void start(final Stage primaryStage) throws Exception {
@@ -28,6 +30,9 @@ public class Main extends Application {
         //input
         cmdTextArea = new TextArea();
         compileButton = new Button("Compile and Run");
+        classPathArea = new TextArea();
+        loadClassButton = new Button("Load Class");
+
         //output
         outputTextArea = new TextArea();
 
@@ -40,9 +45,16 @@ public class Main extends Application {
             outputTextArea.setText(es.useJshell(input));
         });
 
+        loadClassButton.setOnAction(action -> {
+            es.evaluate(classPathArea.getText());
+            outputTextArea.setText("Load success");
+        });
+
         pane.setCenter(compileButton);
         pane.setTop(cmdTextArea);
         pane.setBottom(outputTextArea);
+        pane.setLeft(classPathArea);
+        pane.setRight(loadClassButton);
 
         final Scene scene = new Scene(pane);
         primaryStage.setScene(scene);
