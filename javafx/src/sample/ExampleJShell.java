@@ -3,8 +3,10 @@ package sample;
 import java.io.ByteArrayInputStream;
 import java.io.Console;
 import java.io.*;
+import java.nio.file.Path;
 import java.util.List;
 
+import javafx.css.CssParser;
 import jdk.jshell.*;
 import jdk.jshell.Snippet.Status;
 
@@ -77,26 +79,27 @@ class ExampleJShell {
         return "";
     }
 
-    public void evaluate(String scriptFileName) {
-        try (JShell jshell = JShell.create()) {
-            // Handle snippet events. We can print value or take action if evaluation
-            // failed.
-            jshell.onSnippetEvent(snippetEvent -> snippetEventHandler(snippetEvent));
-
-            String scriptContent = new String(Files.readAllBytes(Paths.get(scriptFileName)));
+    public void evaluate(String stringPath) {
+        // Handle snippet events. We can print value or take action if evaluation
+        // failed.
+        js.onSnippetEvent(snippetEvent -> snippetEventHandler(snippetEvent));
+        Path path = Paths.get(stringPath);
+        System.out.println(stringPath);
+        try {
+            String scriptContent = new String(Files.readAllBytes(path));
             String s = scriptContent;
             while (true) {
                 // Read source line by line till semicolin
                 // notice that unlike DrJava, all expressions and statements are required to end
                 // with ;
-                SourceCodeAnalysis.CompletionInfo an = jshell.sourceCodeAnalysis().analyzeCompletion(s);
+                SourceCodeAnalysis.CompletionInfo an = js.sourceCodeAnalysis().analyzeCompletion(s);
                 if (!an.completeness().isComplete()) {
                     break;
                 }
                 // If there are any method declaration or class declaration in new lines,
                 // resolve it
                 // otherwise execution errors will be thrown
-                jshell.eval(trimNewlines(an.source()));
+                js.eval(trimNewlines(an.source()));
                 // Exit if there are no more expressions to evaluate. EOF
                 if (an.remaining().isEmpty()) {
                     break;
@@ -105,7 +108,7 @@ class ExampleJShell {
                 s = an.remaining();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
     }
 
