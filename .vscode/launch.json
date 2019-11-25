@@ -8,6 +8,13 @@
             "type": "java",
             "name": "CodeLens (Launch) - InteractionPaneGUI",
             "request": "launch",
+            "mainClass": "jedu.interaction.core/jedu.interaction.gui.InteractionPaneGUI",
+            "projectName": "JEdu_878f454c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - InteractionPaneGUI",
+            "request": "launch",
             "mainClass": "InteractionPaneGUI",
             "projectName": "JEdu_cd452294"
         },
