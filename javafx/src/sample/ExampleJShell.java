@@ -1,17 +1,17 @@
 package sample;
 
-import java.io.ByteArrayInputStream;
 import java.io.Console;
-import java.io.*;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
-import javafx.css.CssParser;
-import jdk.jshell.*;
+import jdk.jshell.JShell;
+import jdk.jshell.Snippet;
 import jdk.jshell.Snippet.Status;
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import jdk.jshell.SnippetEvent;
+import jdk.jshell.SourceCodeAnalysis;
 
 class ExampleJShell {
     JShell js = JShell.create();
