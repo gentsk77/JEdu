@@ -6,9 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -24,7 +21,6 @@ public class Main extends Application {
     private Button compileButton;
     private TextArea classPathArea;
     private Button loadClassButton;
-    private TextFlow outputTextFlow;
 
      */
 
@@ -47,13 +43,6 @@ public class Main extends Application {
         //output
         outputTextArea = new TextArea();
         outputTextArea.setEditable(false);
-
-        /*
-        outputTextFlow = new TextFlow();
-        outputTextFlow.maxHeight(500);
-
-         */
-
         prevInput = new ArrayList<>();
 
         // compileButton.setMinWidth(50);
@@ -61,7 +50,7 @@ public class Main extends Application {
         ExampleJShell es = new ExampleJShell();
 
         // TODO: change the content to the actual class path from jedit
-        es.evaluate("D:\\GitHub\\EECS132\\Project2\\HW2.java");
+        //es.evaluate("D:\\GitHub\\EECS132\\Project2\\HW2.java");
         loc = -1;
 
         cmdTextArea.setOnKeyPressed(action -> {
@@ -91,33 +80,11 @@ public class Main extends Application {
                     return;
                 }
 
-                Text textInput = new Text("> " + input + "\n");
-                // outputTextFlow.getChildren().add(textInput);
-
                 outputTextArea.appendText("> " + input + "\n");
                 String output = es.useJshell(input + ";");
                 if (output.length() > 0) {
                     outputTextArea.appendText(output + "\n");
-
-                    Text textOutput = new Text(output + "\n");
-                    // TODO: also change color for error msg
-                    switch (es.checkType(input + ";")) {
-                        case "int":
-                        case "short":
-                        case "long":
-                        case "float":
-                        case "double":
-                            textOutput.setFill(Color.BLUE);
-                            break;
-                        case "String":
-                            textOutput.setFill(Color.RED);
-                            break;
-                        case "char":
-                            textOutput.setFill(Color.DEEPPINK);
-                            break;
-                    }
-                    // System.out.println("output type is " + es.checkType(input + ";"));
-                    // outputTextFlow.getChildren().add(textOutput);
+                    System.out.println("output type is " + es.checkType(input + ";"));
                 }
                 prevInput.add(input);
                 cmdTextArea.clear();
@@ -157,7 +124,6 @@ public class Main extends Application {
 
         // pane.setRight(compileButton);
         pane.setCenter(cmdTextArea);
-        // pane.setBottom(outputTextFlow);
         pane.setBottom(outputTextArea);
         // pane.setLeft(classPathArea);
         // pane.setRight(loadClassButton);
