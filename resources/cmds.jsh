@@ -22,3 +22,6 @@ Map<String, Integer> hm = new HashMap<>();
 hm.put("s1", 1);
 hm.put("s2");
 hm;
+
+// nihao
+System.out.println("hahah");
