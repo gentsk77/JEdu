@@ -31,3 +31,7 @@ javafx/.idea_modules/
 javafx/*.iml
 javafx/*.ipr
 javafx/*.iws
+.idea\
+.idea/
+javafx/.idea/workspace.xml
+*.class
