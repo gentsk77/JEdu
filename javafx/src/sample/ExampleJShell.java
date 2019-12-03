@@ -49,7 +49,7 @@ class ExampleJShell {
                 // We have a snippet creation event
                 switch (e.status()) {
                     case VALID:
-                        sb.append("Successful ");
+                        // sb.append("Successful ");
                         break;
                     case RECOVERABLE_DEFINED:
                         sb.append("With unresolved references ");
@@ -58,19 +58,20 @@ class ExampleJShell {
                         sb.append("Possibly reparable, failed ");
                         break;
                     case REJECTED:
-                        sb.append("Failed ");
+                        // TODO: handle the error message even here or in the snippet event handler
+                        sb.append("ERROR: print error type and details here");
                         break;
                 }
                 if (e.previousStatus() == Status.NONEXISTENT) {
-                    sb.append("addition");
+                    // sb.append("addition");
                 } else {
-                    sb.append("modification");
+                    // sb.append("modification");
                 }
-                sb.append(" of ");
-                sb.append(e.snippet().source());
+                // sb.append(" of ");
+                // sb.append(e.snippet().source());
                 //System.out.println(sb);
                 if (e.value() != null) {
-                    sb.append(" Value is: " + e.value());
+                    sb.append(e.value());
                 }
                 return sb.toString();
 

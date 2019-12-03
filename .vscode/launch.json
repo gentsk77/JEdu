@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - JShellRunner",
+            "request": "launch",
+            "mainClass": "jedu.interaction.core.JShellRunner",
+            "projectName": "JEdu_2d474d9f"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - InteractionPaneGUI",
             "request": "launch",
             "mainClass": "jedu.interaction.core/jedu.interaction.gui.InteractionPaneGUI",
