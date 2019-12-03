@@ -60,7 +60,7 @@ public class Main extends Application {
                     return;
                 }
 
-                outputTextArea.appendText("> " + input.substring(0, input.length() - 1) + "\n");
+                outputTextArea.appendText("> " + input + "\n");
                 String output = es.useJshell(input + ";");
                 if (output.length() > 0) {
                     outputTextArea.appendText(output + "\n");
