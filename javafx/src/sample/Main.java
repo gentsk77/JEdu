@@ -8,10 +8,15 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main extends Application {
 
     private TextArea cmdTextArea;
     private TextArea outputTextArea;
+    private List<String> prevInput;
+    private  int loc;
     /*
     private Button compileButton;
     private TextArea classPathArea;
@@ -38,6 +43,7 @@ public class Main extends Application {
         //output
         outputTextArea = new TextArea();
         outputTextArea.setEditable(false);
+        prevInput = new ArrayList<>();
 
         // compileButton.setMinWidth(50);
 
@@ -45,10 +51,24 @@ public class Main extends Application {
 
         // TODO: change the content to the actual class path from jedit
         es.evaluate("D:\\GitHub\\EECS132\\Project2\\HW2.java");
+        loc = -1;
 
         cmdTextArea.setOnKeyPressed(action -> {
+            if (action.getCode() == KeyCode.UP && loc >= 0) {
+                cmdTextArea.setText(prevInput.get(loc));
+                loc--;
+            }
+            if (action.getCode() == KeyCode.DOWN && loc < prevInput.size() - 1) {
+                cmdTextArea.setText(prevInput.get(loc + 1));
+                loc++;
+            }
             if (action.getCode() == KeyCode.ENTER) {
                 String input = cmdTextArea.getText();
+                // truncate the leading line
+                while (input.length() > 0 && input.charAt(0) == '\n') {
+                    input = input.substring(1);
+                }
+
                 // truncate the tailing line
                 while (input.length() > 0 && input.charAt(input.length() - 1) == '\n') {
                     input = input.substring(0, input.length() - 1);
@@ -64,8 +84,12 @@ public class Main extends Application {
                 String output = es.useJshell(input + ";");
                 if (output.length() > 0) {
                     outputTextArea.appendText(output + "\n");
+                    System.out.println("output type is " + es.checkType(input + ";"));
                 }
+                prevInput.add(input);
                 cmdTextArea.clear();
+                loc = prevInput.size() - 1;
+                System.out.println("loc is " + loc);
             }
         });
 

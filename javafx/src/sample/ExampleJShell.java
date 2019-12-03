@@ -7,11 +7,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import jdk.jshell.JShell;
-import jdk.jshell.Snippet;
+import jdk.jshell.*;
 import jdk.jshell.Snippet.Status;
-import jdk.jshell.SnippetEvent;
-import jdk.jshell.SourceCodeAnalysis;
 
 class ExampleJShell {
     JShell js = JShell.create();
@@ -130,6 +127,17 @@ class ExampleJShell {
             System.out.println("Invalid Statement: " + snippetEvent.snippet().toString()
                     + "\nIgnoring execution of above statement.");
         }
+    }
+
+    public String checkType(String inputCode){
+        List<SnippetEvent> events = js.eval(inputCode);
+        for (SnippetEvent e : events) {
+            Snippet sp = e.snippet();
+            if (sp.kind() == Snippet.Kind.VAR) {
+                return((VarSnippet)sp).typeName();
+            }
+        }
+        return "";
     }
 
     private String trimNewlines(String s) {
