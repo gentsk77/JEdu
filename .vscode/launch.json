@@ -6,23 +6,24 @@
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - ExampleJShell",
-            "request": "launch",
-            "mainClass": "jedu.interaction.core.ExampleJShell",
-            "projectName": "JEdu_878f454c"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - ExampleJShell",
-            "request": "launch",
-            "mainClass": "jedu.interaction.core/jedu.interaction.core.ExampleJShell",
-            "projectName": "JEdu_878f454c"
-        },
-        {
-            "type": "java",
             "name": "CodeLens (Launch) - JShellRunner",
             "request": "launch",
-            "mainClass": "jedu.interaction.core.JShellRunner"
+            "mainClass": "jedu.interaction.core.JShellRunner",
+            "projectName": "JEdu_2d474d9f"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - InteractionPaneGUI",
+            "request": "launch",
+            "mainClass": "jedu.interaction.core/jedu.interaction.gui.InteractionPaneGUI",
+            "projectName": "JEdu_878f454c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - InteractionPaneGUI",
+            "request": "launch",
+            "mainClass": "InteractionPaneGUI",
+            "projectName": "JEdu_cd452294"
         },
         {
             "type": "java",
