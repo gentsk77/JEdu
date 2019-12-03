@@ -1,3 +1,5 @@
+package jedu.interaction.gui;
+
 import javafx.application.Application;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
