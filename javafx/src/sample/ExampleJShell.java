@@ -22,7 +22,7 @@ class ExampleJShell {
 
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     PrintStream ps = new PrintStream(baos);
-
+    PrintStream oldStdout = System.out;
 
 
     public String useJshell(String input) {
@@ -38,8 +38,11 @@ class ExampleJShell {
                     d -> System.out.println(d.getMessage(Locale.getDefault()))
             );
             if (baos.size() > 0) {
+                System.out.flush();
+                System.setOut(oldStdout);
                 return baos.toString();
             }
+
             StringBuilder sb = new StringBuilder();
 
             if (e.causeSnippet() == null) {
@@ -70,10 +73,14 @@ class ExampleJShell {
                 if (e.value() != null) {
                     sb.append(e.value());
                 }
+                System.out.flush();
+                System.setOut(oldStdout);
                 return sb.toString();
 
             }
         }
+        System.out.flush();
+        System.setOut(oldStdout);
         return "";
     }
 
@@ -153,14 +160,4 @@ class ExampleJShell {
     }
 
 
-    public String checkType(String inputCode){
-        List<SnippetEvent> events = js.eval(inputCode);
-        for (SnippetEvent e : events) {
-            Snippet sp = e.snippet();
-            if (sp.kind() == Snippet.Kind.VAR) {
-                return((VarSnippet)sp).typeName();
-            }
-        }
-        return "";
-    }
 }
