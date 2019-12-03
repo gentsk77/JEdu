@@ -12,6 +12,7 @@ import jdk.jshell.Snippet;
 import jdk.jshell.Snippet.Status;
 import jdk.jshell.SnippetEvent;
 import jdk.jshell.SourceCodeAnalysis;
+import jdk.jshell.*;
 
 class ExampleJShell {
     JShell js = JShell.create();
@@ -142,5 +143,17 @@ class ExampleJShell {
             e--;
         }
         return s.substring(b, e + 1);
+    }
+
+
+    public String checkType(String inputCode){
+        List<SnippetEvent> events = js.eval(inputCode);
+        for (SnippetEvent e : events) {
+            Snippet sp = e.snippet();
+            if (sp.kind() == Snippet.Kind.VAR) {
+                return((VarSnippet)sp).typeName();
+            }
+        }
+        return "";
     }
 }
