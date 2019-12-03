@@ -1,7 +1,9 @@
 package sample;
 
+import java.io.ByteArrayOutputStream;
 import java.io.Console;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,39 +15,34 @@ import jdk.jshell.Snippet.Status;
 import jdk.jshell.SnippetEvent;
 import jdk.jshell.SourceCodeAnalysis;
 import jdk.jshell.*;
+import java.lang.*;
+import java.util.Locale;
 
 class ExampleJShell {
     JShell js = JShell.create();
 
-    public String useJshell(String fileAsString) {
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    PrintStream ps = new PrintStream(baos);
 
 
-        /*
-        try {
-            String fileAsString = "";
-            InputStream is = new FileInputStream("C:\\Users\\guo\\Desktop\\Order.java");
-            BufferedReader buf = new BufferedReader(new InputStreamReader(is));
-            String line = buf.readLine();
-            StringBuilder sb = new StringBuilder();
-            while (line != null) {
-                sb.append(line).append("\n");
-                line = buf.readLine();
-            }
-            fileAsString = sb.toString();
-        } catch (FileNotFoundException e) {
-            System.out.println("Not Found");
-        } catch (IOException e) {
-            System.out.println("IO");
-        }
-        */
 
-        Console console = System.console();
-        //String input = console.readLine();
-        String input = fileAsString;
+    public String useJshell(String input) {
+        System.setOut(ps);
+
         List<SnippetEvent> events = js.eval(input);
-        //System.out.println(events);
+
         for (SnippetEvent e : events) {
+
+
+            Snippet s = e.snippet();
+            js.diagnostics(s).forEach(
+                    d -> System.out.println(d.getMessage(Locale.getDefault()))
+            );
+            if (baos.size() > 0) {
+                return baos.toString();
+            }
             StringBuilder sb = new StringBuilder();
+
             if (e.causeSnippet() == null) {
                 // We have a snippet creation event
                 switch (e.status()) {
