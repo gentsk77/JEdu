@@ -61,7 +61,7 @@ public class Main extends Application {
         ExampleJShell es = new ExampleJShell();
 
         // TODO: change the content to the actual class path from jedit
-        es.evaluate("D:\\GitHub\\EECS132\\Project2\\HW2.java");
+        //es.evaluate("D:\\GitHub\\EECS132\\Project2\\HW2.java");
         loc = -1;
 
         cmdTextArea.setOnKeyPressed(action -> {

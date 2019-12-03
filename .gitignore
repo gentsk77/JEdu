@@ -35,3 +35,6 @@ javafx/*.iws
 .idea/
 javafx/.idea/workspace.xml
 *.class
+javafx/.idea/workspace.xml
+*.class
+*.xml
