@@ -15,7 +15,6 @@ class ExampleJShell {
 
     public String useJshell(String fileAsString) {
 
-
         /*
         try {
             String fileAsString = "";
@@ -41,6 +40,7 @@ class ExampleJShell {
         List<SnippetEvent> events = js.eval(input);
         //System.out.println(events);
         for (SnippetEvent e : events) {
+
             StringBuilder sb = new StringBuilder();
             if (e.causeSnippet() == null) {
                 // We have a snippet creation event
