@@ -16,7 +16,7 @@
             "name": "CodeLens (Launch) - InteractionPaneGUI",
             "request": "launch",
             "mainClass": "jedu.interaction.core/jedu.interaction.gui.InteractionPaneGUI",
-            "projectName": "JEdu_2d474d9f"
+            "projectName": "JEdu_878f454c"
         },
         {
             "type": "java",
